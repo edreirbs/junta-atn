@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>La primera junta de Tom con la redacción · ATN Noticias</title>
+  <meta name="description" content="Regístrate a la primera junta de Tom Wambsgans con la redacción de ATN y manda tu pregunta.">
+  <meta name="theme-color" content="#C8102E">
+  <meta property="og:title" content="La primera junta de Tom con la redacción · ATN Noticias">
+  <meta property="og:description" content="Regístrate, pregunta y vota las preguntas de la redacción.">
+  <meta property="og:image" content="img/gafete-persona.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="img/gafete-persona.webp">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header class="barra">
+    <a class="logo" href="#inicio" aria-label="ATN Noticias"><span class="logo-atn">ATN</span><span class="logo-not">Noticias</span></a>
+    <a class="btn chico" href="#registro">Registrarme</a>
+  </header>
+
+  <main>
+    <section id="inicio" class="portada">
+      <div class="texto-portada">
+        <p class="etiqueta">Oficina de Tom Wambsgans · Presidente de noticias</p>
+        <h1>La primera junta de Tom con la redacción</h1>
+        <p class="bajada" id="fecha-junta">10:00 h, hora de Nueva York</p>
+        <div class="reloj" id="reloj" aria-label="Cuenta regresiva a la junta">
+          <div><b id="r-dias">00</b><span>días</span></div>
+          <div><b id="r-horas">00</b><span>horas</span></div>
+          <div><b id="r-min">00</b><span>min</span></div>
+          <div><b id="r-seg">00</b><span>seg</span></div>
+        </div>
+        <div class="acciones">
+          <a class="btn" href="#registro">Registrarme</a>
+          <a class="enlace" href="#muro">Ver el muro</a>
+        </div>
+      </div>
+      <div class="escena" id="escena">
+        <div class="tarjeta3d" id="tarjeta3d">
+          <img id="gafete" src="img/gafete-persona.webp" width="800" height="500" alt="Gafete de ATN para la junta con la redacción, en persona">
+          <div class="brillo" aria-hidden="true"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cinta" aria-live="polite">
+      <p class="lista" id="lista">Ya vienen <b id="cuantos">…</b> <span id="cuantos-txt">de la redacción</span></p>
+      <p class="cierre" id="cierre-junta">El registro cierra la víspera a las 18:00 h.</p>
+    </section>
+
+    <section class="seccion" id="orden">
+      <h2>Orden del día</h2>
+      <ol class="puntos">
+        <li class="punto"><span class="num">1</span><div><h3>Tom se presenta</h3><p>Quién es y cómo va a trabajar con la redacción.</p></div></li>
+        <li class="punto"><span class="num">2</span><div><h3>Lo que sigue para ATN</h3><p>Las prioridades de las próximas semanas.</p></div></li>
+        <li class="punto"><span class="num">3</span><div><h3>Las preguntas de la redacción</h3><p>Empezando por las más votadas del muro.</p></div></li>
+      </ol>
+      <figure class="sala">
+        <img src="img/redaccion.webp" width="900" height="500" loading="lazy" alt="Ilustración de la sala de redacción de ATN, con la pared de pantallas y los escritorios">
+        <figcaption>La sala de redacción de ATN, en Nueva York.</figcaption>
+      </figure>
+    </section>
+
+    <section class="seccion registro" id="registro">
+      <div class="caja">
+        <div id="registro-cabeza">
+          <h2>Regístrate</h2>
+          <p>Te confirmamos por correo tu lugar y cómo entras. Después puedes preguntar en el muro.</p>
+        </div>
+        <form id="forma" novalidate>
+          <label>Tu nombre<input id="nombre" name="nombre" autocomplete="name" maxlength="80" required></label>
+          <label>Tu correo<input id="correo" name="correo" type="email" inputmode="email" autocomplete="email" maxlength="120" required></label>
+          <fieldset>
+            <legend>¿Cómo vienes?</legend>
+            <div class="dos">
+              <label><input type="radio" name="modalidad" value="En persona" checked><span>En persona</span></label>
+              <label><input type="radio" name="modalidad" value="En línea"><span>En línea</span></label>
+            </div>
+            <p class="nota" id="nota-modalidad">En la sala de redacción de ATN, en Nueva York. Entras con tu gafete.</p>
+          </fieldset>
+          <p class="mensaje" id="mensaje" role="status"></p>
+          <button class="btn grande" id="enviar" type="submit">Registrarme</button>
+          <p class="privacidad">Al registrarte aceptas el <a href="#aviso">aviso de privacidad</a>.</p>
+        </form>
+        <div class="gracias" id="gracias" hidden>
+          <div class="ok" aria-hidden="true">✓</div>
+          <h2 id="gracias-titulo">Tu lugar quedó</h2>
+          <p>En unos minutos te llega la confirmación. Revisa también tu carpeta de spam.</p>
+          <a class="btn" href="#muro">Manda tu pregunta</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion muro" id="muro">
+      <div class="muro-cabeza">
+        <h2>Las preguntas de la redacción</h2>
+        <span class="vivo" id="vivo"><i aria-hidden="true"></i><span id="vivo-txt">Conectando…</span></span>
+      </div>
+      <form id="forma-pregunta" class="caja pregunta" novalidate>
+        <label for="pregunta">Tu pregunta para Tom</label>
+        <textarea id="pregunta" rows="3" maxlength="200" placeholder="Una pregunta corta y directa"></textarea>
+        <div class="pregunta-pie"><small id="cuenta">0 de 200</small><button class="btn" id="mandar" type="submit">Mandar pregunta</button></div>
+        <p class="mensaje" id="mensaje-pregunta" role="status"></p>
+      </form>
+      <p class="nota">Puedes votar sin registrarte: un voto por pregunta en cada dispositivo. En el muro solo sale tu nombre de pila.</p>
+      <ol class="preguntas" id="preguntas" aria-label="Preguntas del muro"></ol>
+    </section>
+
+    <section class="seccion resumen" id="resumen">
+      <h2>El resumen de hoy</h2>
+      <p class="fecha-resumen" id="resumen-fecha"></p>
+      <div id="resumen-texto" class="resumen-texto"><p>El primer resumen llega mañana a las 7:00.</p></div>
+      <ul id="resumen-fuentes" class="fuentes"></ul>
+    </section>
+
+    <section class="seccion aviso" id="aviso">
+      <h2>Aviso de privacidad</h2>
+      <p>Tus datos los recibe la oficina de Tom Wambsgans en ATN solo para confirmar tu registro y mandarte tu acceso a la junta. En el muro solo sale tu nombre de pila. No los compartimos con nadie. Para darte de baja, responde "baja" a cualquiera de nuestros correos y te borramos de la lista.</p>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <p>ATN es una cadena de ficción. Esta es una página de práctica de un curso de Claude for Business.</p>
+    <p>Material de ficción con fines educativos. Personajes y empresas de la serie Succession (HBO). Sin afiliación con HBO ni con sus titulares.</p>
+  </footer>
+
+  <canvas id="confeti" aria-hidden="true"></canvas>
+  <script src="config.js"></script>
+  <script src="app.js" defer></script>
+</body>
+</html>
