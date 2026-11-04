@@ -1,7 +1,134 @@
 <!doctype html>
 <html lang="es">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Muy pronto · La junta de Tom con la redacción</title>
-<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#111;color:#fff;font:18px/1.4 system-ui,sans-serif;text-align:center;padding:24px}.atn{display:inline-block;background:#C8102E;color:#fff;font:700 34px/1 "Arial Narrow",sans-serif;padding:6px 14px;letter-spacing:.02em}h1{letter-spacing:.04em;text-transform:uppercase}small{display:block;margin-top:40px;color:#9a9a9a;font-size:12px}</style></head>
-<body><main><span class="atn">ATN</span><h1>Muy pronto</h1><p>La página de la primera junta de Tom con la redacción se está construyendo con Claude.</p>
-<small>Material de ficción con fines educativos. Personajes y empresas de la serie Succession (HBO). Sin afiliación con HBO ni con sus titulares.</small></main></body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>La primera junta de Tom con la redacción · ATN Noticias</title>
+  <meta name="description" content="Regístrate para la primera junta de Tom Wambsgans, presidente de noticias de ATN, con la redacción. Manda y vota las preguntas en vivo.">
+  <meta name="theme-color" content="#C8102E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<header class="barra no-pantalla">
+  <a class="logo" href="#" aria-label="ATN Noticias"><span class="logo-atn">ATN</span><span class="logo-noticias">Noticias</span></a>
+  <a class="barra-link" href="#registro">Registrarme</a>
+</header>
+
+<main>
+
+  <!-- 1. Portada -->
+  <section class="portada no-pantalla" aria-labelledby="titulo">
+    <div class="portada-texto">
+      <p class="etiqueta">Junta con la redacción</p>
+      <h1 id="titulo">La primera junta de Tom con la redacción</h1>
+      <p class="fecha" id="fecha-junta">Cargando la fecha…</p>
+      <div class="cuenta" id="cuenta" role="timer" aria-label="Cuenta regresiva para la junta">
+        <div><b id="c-dias">--</b><span>días</span></div>
+        <div><b id="c-horas">--</b><span>horas</span></div>
+        <div><b id="c-min">--</b><span>min</span></div>
+        <div><b id="c-seg">--</b><span>seg</span></div>
+      </div>
+      <a class="boton" href="#registro">Registrarme</a>
+    </div>
+    <div class="gafete-escena" id="gafete-escena">
+      <div class="gafete" id="gafete">
+        <img id="gafete-img" src="img/gafete-persona.webp" width="800" height="500" alt="Gafete de la junta con la redacción de ATN, modalidad en persona">
+        <span class="brillo" aria-hidden="true"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Contador -->
+  <section class="contador" id="contador" aria-live="polite">
+    <p class="contador-linea"><span id="txt-asistentes-antes">Ya vienen</span><b id="n-asistentes">0</b><span>de la redacción</span></p>
+    <p class="nota no-pantalla" id="cierre">El registro cierra la víspera, a las 18:00 h de Nueva York.</p>
+  </section>
+
+  <!-- 3. Orden del día -->
+  <section class="bloque no-pantalla" aria-labelledby="t-orden">
+    <h2 id="t-orden">Orden del día</h2>
+    <ol class="orden">
+      <li><span><b>Tom se presenta.</b></span></li>
+      <li><span><b>Lo que sigue para ATN.</b></span></li>
+      <li><span><b>Las preguntas de la redacción,</b> empezando por las más votadas.</span></li>
+    </ol>
+    <div class="donde">
+      <img src="img/redaccion.webp" width="900" height="500" loading="lazy" alt="La sala de redacción de ATN, con la pared de pantallas y los escritorios">
+      <ul>
+        <li><b>En persona.</b> Sala de redacción de ATN, Nueva York. Se entra con el gafete de ATN.</li>
+        <li><b>En línea.</b> Transmisión interna. Tu liga personal llega por correo un día antes.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 4. Registro -->
+  <section class="bloque no-pantalla" id="registro" aria-labelledby="t-registro">
+    <h2 id="t-registro">Registro</h2>
+    <form id="form-registro" novalidate>
+      <label>Nombre
+        <input type="text" id="r-nombre" name="nombre" autocomplete="name" maxlength="80" required>
+      </label>
+      <label>Correo
+        <input type="email" id="r-correo" name="correo" autocomplete="email" inputmode="email" maxlength="120" required>
+      </label>
+      <fieldset>
+        <legend>Modalidad</legend>
+        <label class="opcion"><input type="radio" name="modalidad" value="En persona" checked><span>En persona</span></label>
+        <label class="opcion"><input type="radio" name="modalidad" value="En línea"><span>En línea</span></label>
+      </fieldset>
+      <button class="boton" type="submit" id="r-enviar">Registrarme</button>
+      <p class="error" id="r-error" role="alert" hidden></p>
+    </form>
+    <div class="listo" id="registro-listo" role="status" hidden>
+      <svg class="palomita" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/><path d="M14 27l8 8 16-17"/></svg>
+      <h3 id="listo-titulo">Tu lugar quedó</h3>
+      <p>En unos minutos te llega la confirmación.</p>
+    </div>
+    <p class="privacidad">
+      <b>Aviso de privacidad.</b> Tu nombre y tu correo los recibe la oficina de Tom Wambsgans en ATN (de práctica) para confirmar tu registro y mandarte el acceso. En el muro solo sale tu nombre de pila. No se comparten. Para darte de baja, responde "baja" al correo de confirmación.
+    </p>
+  </section>
+
+  <!-- 5. Muro -->
+  <section class="bloque muro" id="muro" aria-labelledby="t-muro">
+    <div class="muro-cabeza">
+      <h2 id="t-muro">Las preguntas de la redacción</h2>
+      <span class="envivo" id="envivo" data-estado="conectando"><i aria-hidden="true"></i><span id="envivo-txt">Conectando</span></span>
+    </div>
+
+    <form id="form-pregunta" class="no-pantalla" novalidate>
+      <label for="p-texto" class="solo-lectores">Tu pregunta</label>
+      <textarea id="p-texto" rows="3" maxlength="200" placeholder="¿Qué quieres preguntarle a Tom?"></textarea>
+      <div class="pregunta-pie">
+        <span class="cuenta-letras" id="p-cuenta">0 / 200</span>
+        <button class="boton" type="submit" id="p-enviar">Preguntar</button>
+      </div>
+      <p class="aviso" id="p-aviso" role="alert" hidden></p>
+    </form>
+
+    <ul class="preguntas" id="lista-muro" aria-live="polite"></ul>
+    <p class="nota" id="muro-vacio" hidden>Todavía no hay preguntas. Manda la primera.</p>
+  </section>
+
+  <!-- 6. El resumen de hoy -->
+  <section class="bloque no-pantalla" id="resumen" aria-labelledby="t-resumen">
+    <h2 id="t-resumen">El resumen de hoy</h2>
+    <div id="resumen-cuerpo">
+      <p class="nota">Cargando…</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="pie no-pantalla">
+  <p>Material de ficción con fines educativos. Personajes y empresas de la serie Succession (HBO). Sin afiliación con HBO ni con sus titulares.</p>
+</footer>
+
+<script src="config.js"></script>
+<script src="app.js" defer></script>
+</body>
 </html>
